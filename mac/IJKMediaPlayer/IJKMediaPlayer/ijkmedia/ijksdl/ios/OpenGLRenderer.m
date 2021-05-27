@@ -182,7 +182,7 @@ static const char FLAT_FSH_NV12_STR[] = RC_GLES_STRINGIZE(
         default:
             break;
     }
-    for (int i = 0; i < planes; ++i) {
+    for (int i = 0; i < 3; ++i) {
         glActiveTexture(GL_TEXTURE0 + i);
         glBindTexture(GL_TEXTURE_2D, textures[i]);
         glUniform1i(uniformSamplers[i], i);

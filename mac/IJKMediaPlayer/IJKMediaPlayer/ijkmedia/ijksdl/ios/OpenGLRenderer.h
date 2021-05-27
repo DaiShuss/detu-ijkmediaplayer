@@ -8,7 +8,6 @@
  */
 #include "glUtil.h"
 #import <Foundation/Foundation.h>
-#import <AVFoundation/AVFoundation.h>
 
 typedef enum RcColorFormat {
     FMT_RGBA,

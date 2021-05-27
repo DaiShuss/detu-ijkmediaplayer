@@ -20,6 +20,7 @@ extern "C" {
 
 #include "ijk_frame.h"
 #include "ijk_metadata.h"
+#include "VideoGLView.h"
 
 //get video or audio info 
 #define FLOAT_VIDEO_OUTPUT_FRAMES_PER_SECOND   10002
@@ -82,7 +83,7 @@ int ijkFfplayDecoder_setLogCallback(void(*callback)(void*, int, const char*, va_
 
 int ijkFfplayDecoder_setDecoderCallBack(IjkFfplayDecoder* decoder, void* opaque, IjkFfplayDecoderCallBack* callback);
 
-int ijkFfplayDecoder_setDataSource(IjkFfplayDecoder* decoder, const char* file_absolute_path);
+int ijkFfplayDecoder_setDataSource(IjkFfplayDecoder* decoder, const char* file_absolute_path, VideoGLView *glview);
 
 int ijkFfplayDecoder_prepare(IjkFfplayDecoder* decoder);
 

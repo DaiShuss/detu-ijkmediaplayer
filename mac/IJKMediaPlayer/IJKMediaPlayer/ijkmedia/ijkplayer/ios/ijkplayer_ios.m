@@ -59,7 +59,7 @@ void ijkmp_ios_set_glview(IjkMediaPlayer *mp)
 {
     assert(mp);
     pthread_mutex_lock(&mp->mutex);
-    //ijkmp_ios_set_glview_l(mp, glView);
+//    ijkmp_ios_set_glview_l(mp, glView);
     pthread_mutex_unlock(&mp->mutex);
 }
 

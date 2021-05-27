@@ -189,7 +189,7 @@ int ijkFfplayDecoder_setDecoderCallBack(IjkFfplayDecoder* decoder, void* opaque,
     return 0;
 }
 
-int ijkFfplayDecoder_setDataSource(IjkFfplayDecoder* decoder, const char* file_absolute_path) {
+int ijkFfplayDecoder_setDataSource(IjkFfplayDecoder* decoder, const char* file_absolute_path, VideoGLView *glview) {
     if(decoder == NULL || file_absolute_path == NULL || strlen(file_absolute_path) == 0) {
         return -1;
     }
@@ -200,6 +200,7 @@ int ijkFfplayDecoder_setDataSource(IjkFfplayDecoder* decoder, const char* file_a
     } else if(strcmp(MAC_DECODER_NAME_VTB, decoder->codecName) == 0) {
         isVideoToolBox = true;
     }
+    isVideoToolBox = false;
     IJKFFOptions *options =  [[IJKFFOptions alloc] init];
     if(isVideoToolBox){
         [options setPlayerOptionValue:@"fcc-_es2"          forKey:@"overlay-format"];
@@ -221,40 +222,11 @@ int ijkFfplayDecoder_setDataSource(IjkFfplayDecoder* decoder, const char* file_a
     [options setCodecOptionIntValue:0 forKey:@"is_avc"];
     //[options setPlayerOptionIntValue:1      forKey:@"framedrop"];
     
-    if([path isEqualToString:@"rtsp://192.168.42.1/live"]){
-        
-        [options setPlayerOptionIntValue:0 forKey:@"packet-buffering"];
-        [options setPlayerOptionIntValue:15 forKey:@"limit_packets"];
-        [options setFormatOptionValue:@"tcp" forKey:@"rtsp_transport"];
-        [options setFormatOptionValue:@"video" forKey:@"allowed_media_types"];
-        
-        
-    }else  if([path hasPrefix:@"rtsp://192.168.42.1/tmp"]){
-        
-        //[options setPlayerOptionIntValue:0 forKey:@"packet-buffering"];
-        //[options setFormatOptionIntValue:5000000 forKey:@"max_delay"];
-        // [options setFormatOptionValue:@"tcp" forKey:@"rtsp_transport"];
-        
-        
-    }else  if([path hasPrefix:@"http://192.168.1.254:8192"]){
-        
-        [options setPlayerOptionIntValue:0 forKey:@"packet-buffering"];
-        
-    }else if(  [path hasPrefix:@"rtsp://"] ){
-        
-        [options setPlayerOptionIntValue:0 forKey:@"packet-buffering"];
-        [options setPlayerOptionIntValue:15 forKey:@"limit_packets"];
-        
-        
-        [options setFormatOptionValue:@"udp" forKey:@"rtsp_transport"];
-    }
     
-    if(  [path hasPrefix:@"rtmp://"] ){
-        
-        [options setPlayerOptionIntValue:0 forKey:@"packet-buffering"];
-        //[options setPlayerOptionIntValue:15 forKey:@"limit_packets"];
-    }
-    decoder->controller = [[IJKFFMoviePlayerController alloc]initWithContentURLString:path withOptions:options isVideotoolbox:isVideoToolBox];
+    decoder->controller = [[IJKFFMoviePlayerController alloc] initWithContentURLString:path
+                                                                           withOptions:options
+                                                                        isVideotoolbox:isVideoToolBox
+                                                                                glView:glview];
     decoder->controller.delegate = decoder->eventReceiver;
     return 0;
 }

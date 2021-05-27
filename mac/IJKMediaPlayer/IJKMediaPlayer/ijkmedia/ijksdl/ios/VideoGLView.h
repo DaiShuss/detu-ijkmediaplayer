@@ -49,10 +49,9 @@
  
  */
 
-
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/CVDisplayLink.h>
-#import"OpenGLRenderer.h"
+#import "OpenGLRenderer.h"
 
 @interface VideoGLView : NSOpenGLView {
     CVDisplayLinkRef displayLink;

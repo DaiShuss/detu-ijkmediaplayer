@@ -37,40 +37,13 @@
 @property (weak) IBOutlet NSImageView *cameraView;
 @property (weak) IBOutlet NSTextField *fpsLabel;
 @property (nonatomic, strong) VideoGLView *openGLView;
-@property(nonatomic, strong)MacVideoToolBoxDecoder* macVideoToolBoxDecoder;
+@property (nonatomic, strong)MacVideoToolBoxDecoder* macVideoToolBoxDecoder;
 @end
 
 @implementation ViewController
 {
     IjkFfplayDecoder* decoder;
     RcFrame frame;
-}
-
-
-void func_get_frame(void* opaque, IjkVideoFrame *frame_callback) {
-    ViewController* controller = (__bridge ViewController*)opaque;
-    RcFrame* frame = &controller->frame;
-    frame->data[0] = frame_callback->data[0];
-    frame->data[1] = frame_callback->data[1];
-    frame->data[2] = frame_callback->data[2];
-    frame->linesize[0] = frame_callback->linesize[0];
-    frame->linesize[1] = frame_callback->linesize[1];
-    frame->linesize[2] = frame_callback->linesize[2];
-    frame->width = frame_callback->w;
-    frame->height = frame_callback->h;
-    switch(frame_callback->format) {
-        case PIX_FMT_YUV420P:
-            frame->format = FMT_YUV420P;
-            frame->planes = 3;
-            break;
-        case PIX_FMT_NV12:
-            frame->format = FMT_NV12;
-            frame->planes = 2;
-            break;
-        default:
-            break;
-    }
-    [controller.openGLView setImage:frame];
 }
 
 void func_state_change(void* opaque, IjkMsgState ijk_msgint, int arg1, int arg2) {
@@ -85,8 +58,6 @@ void func_state_change(void* opaque, IjkMsgState ijk_msgint, int arg1, int arg2)
     }
 }
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setWantsLayer:YES];
@@ -100,11 +71,10 @@ void func_state_change(void* opaque, IjkMsgState ijk_msgint, int arg1, int arg2)
     ijkFfplayDecoder_init();
     decoder = ijkFfplayDecoder_create();
     IjkFfplayDecoderCallBack callBack = {0};
-    callBack.func_get_frame = &func_get_frame;
     callBack.func_state_change = &func_state_change;
     ijkFfplayDecoder_setDecoderCallBack(decoder, (__bridge void*) self, &callBack);
     ijkFfplayDecoder_setHwDecoderName(decoder, "h264_vtb");
-    ijkFfplayDecoder_setDataSource(decoder, [path UTF8String]);
+    ijkFfplayDecoder_setDataSource(decoder, [path UTF8String], self.openGLView);
     ijkFfplayDecoder_prepare(decoder);
     ijkFfplayDecoder_start(decoder);
     

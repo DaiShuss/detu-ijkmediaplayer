@@ -178,23 +178,22 @@ void IJKFFIOStatCompleteRegister(void (*cb)(const char *url,
 
 - (id)initWithContentURL:(NSURL *)aUrl
              withOptions:(IJKFFOptions *)options
-{
+                  glView:(VideoGLView *)glView {
     if (aUrl == nil)
         return nil;
 
     // Detect if URL is file path and return proper string for it
     NSString *aUrlString = [aUrl isFileURL] ? [aUrl path] : [aUrl absoluteString];
 
-    return [self initWithContentURLString:aUrlString
-                              withOptions:options];
+    return [self initWithContentURLString:aUrlString withOptions:options glView:glView];
 }
 
 - (id)initWithContentURLString:(NSString *)aUrlString
                    withOptions:(IJKFFOptions *)options
-                isVideotoolbox:(Boolean)isVideotoolbox{
+                isVideotoolbox:(Boolean)isVideotoolbox
+                        glView:(VideoGLView *)glView {
     self.isVideotoolbox = isVideotoolbox;
-    return [self initWithContentURLString:aUrlString
-                              withOptions:options];
+    return [self initWithContentURLString:aUrlString withOptions:options glView:glView];
 }
 
 void voutFreeL(SDL_Vout *vout) {
@@ -311,6 +310,7 @@ void voutFreeL(SDL_Vout *vout) {
 
 - (id)initWithContentURLString:(NSString *)aUrlString
                    withOptions:(IJKFFOptions *)options
+                        glView:(VideoGLView *)glView
 {
     if (aUrlString == nil)
         return nil;
@@ -342,15 +342,19 @@ void voutFreeL(SDL_Vout *vout) {
 
         // init player
         _mediaPlayer = ijkmp_ios_create(media_player_msg_loop);
+
+        
         _msgPool = [[IJKFFMoviePlayerMessagePool alloc] init];
 
         ijkmp_set_weak_thiz(_mediaPlayer, (__bridge_retained void *) self);
         ijkmp_set_inject_opaque(_mediaPlayer, (__bridge void *) self);
         ijkmp_set_option_int(_mediaPlayer, IJKMP_OPT_CATEGORY_PLAYER, "start-on-prepared", _shouldAutoplay ? 1 : 0);
 
-        _mediaPlayer->ffplayer->vout->display_overlay = display_overlay;
-        _mediaPlayer->ffplayer->vout->opaque = (__bridge void *) self;
-        _mediaPlayer->ffplayer->vout->free_l = voutFreeL;
+        // give up old way
+//        _mediaPlayer->ffplayer->vout->display_overlay = display_overlay;
+//        _mediaPlayer->ffplayer->vout->opaque = (__bridge void *) self;
+//        _mediaPlayer->ffplayer->vout->free_l = voutFreeL;
+        SDL_VoutIos_SetGLView(_mediaPlayer->ffplayer->vout, glView);
         
         // init audio sink
         [[IJKAudioKit sharedInstance] setupAudioSession];
