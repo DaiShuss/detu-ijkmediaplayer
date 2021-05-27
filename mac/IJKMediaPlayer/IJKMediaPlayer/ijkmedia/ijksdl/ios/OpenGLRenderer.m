@@ -136,6 +136,10 @@ static const char FLAT_FSH_NV12_STR[] = RC_GLES_STRINGIZE(
     if(overLay == NULL) {
         return;
     }
+    const int planes = overLay->planes;
+    if (planes > 10) {
+        return;
+    }
     if(program == 0) {
         [self initShader: overLay->format];
         [self initTextures];
@@ -157,7 +161,6 @@ static const char FLAT_FSH_NV12_STR[] = RC_GLES_STRINGIZE(
     glUseProgram(program);
     
     [renderLock lock];
-    const int planes = overLay->planes;
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     
     int widths[3] = {0};
@@ -182,7 +185,7 @@ static const char FLAT_FSH_NV12_STR[] = RC_GLES_STRINGIZE(
         default:
             break;
     }
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < planes; ++i) {
         glActiveTexture(GL_TEXTURE0 + i);
         glBindTexture(GL_TEXTURE_2D, textures[i]);
         glUniform1i(uniformSamplers[i], i);

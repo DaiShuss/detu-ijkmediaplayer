@@ -208,6 +208,7 @@ int ijkFfplayDecoder_setDataSource(IjkFfplayDecoder* decoder, const char* file_a
         //[options setPlayerOptionIntValue:4096    forKey:@"videotoolbox-max-frame-width"];
     }else{
         //     [options setPlayerOptionValue:@"fcc-rv24"          forKey:@"overlay-format"];
+        [options setPlayerOptionIntValue:0      forKey:@"videotoolbox"];
         [options setPlayerOptionValue:@"fcc-i420"          forKey:@"overlay-format"];
         
         

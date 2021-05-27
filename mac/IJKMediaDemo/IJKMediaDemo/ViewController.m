@@ -43,7 +43,6 @@
 @implementation ViewController
 {
     IjkFfplayDecoder* decoder;
-    RcFrame frame;
 }
 
 void func_state_change(void* opaque, IjkMsgState ijk_msgint, int arg1, int arg2) {
@@ -63,7 +62,8 @@ void func_state_change(void* opaque, IjkMsgState ijk_msgint, int arg1, int arg2)
     [self.view setWantsLayer:YES];
     // Do any additional setup after loading the view.
     self.view.autoresizesSubviews = YES;
-    self.openGLView = [[VideoGLView alloc] initWithFrame:self.view.frame];
+    NSRect frame = NSMakeRect(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40);
+    self.openGLView = [[VideoGLView alloc] initWithFrame:frame];
     self.openGLView.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;
     [self.view addSubview:self.openGLView];
     
