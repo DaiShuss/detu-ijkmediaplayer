@@ -36,7 +36,7 @@
 
 @property (weak) IBOutlet NSImageView *cameraView;
 @property (weak) IBOutlet NSTextField *fpsLabel;
-@property (weak) IBOutlet VideoGLView *openGLView;
+@property (nonatomic, strong) VideoGLView *openGLView;
 @property(nonatomic, strong)MacVideoToolBoxDecoder* macVideoToolBoxDecoder;
 @end
 
@@ -91,15 +91,12 @@ void func_state_change(void* opaque, IjkMsgState ijk_msgint, int arg1, int arg2)
     [super viewDidLoad];
     [self.view setWantsLayer:YES];
     // Do any additional setup after loading the view.
-    NSString* path = @"/Users/chao/Downloads/wedding.mp4";
-    //path = @"/Users/chao/Downloads/IMG_6551.MP4";
-    path = @"/Users/chao/Downloads/xihu.mp4";
-    path = @"http://media.detu.com/@/41020711-1591-C3CD-78FA-FB2F67437049/2017-06-05/593590081a66b-2048x1024.m3u8";
-    path = @"/Users/chao/Desktop/穿梭在法国小镇_injected.mp4";
-    path = @"/Users/chao/Downloads/xihu_cut.mp4";
-    //path = @"/Users/chao/Downloads/IMG_0728.MP4";
-    //path = @"/Users/chao/Downloads/pano/tb402.MP4";
-    //path = @"/Users/chao/Downloads/4.09婚礼现场版.mp4";
+    self.view.autoresizesSubviews = YES;
+    self.openGLView = [[VideoGLView alloc] initWithFrame:self.view.frame];
+    self.openGLView.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;
+    [self.view addSubview:self.openGLView];
+    
+    NSString* path = @"http://media.detu.com/@/41020711-1591-C3CD-78FA-FB2F67437049/2017-06-05/593590081a66b-2048x1024.m3u8";
     ijkFfplayDecoder_init();
     decoder = ijkFfplayDecoder_create();
     IjkFfplayDecoderCallBack callBack = {0};
