@@ -7,6 +7,7 @@
   Most of the code is OS independent.
  */
 #include "glUtil.h"
+#include "ijksdl_vout.h"
 #import <Foundation/Foundation.h>
 
 typedef enum RcColorFormat {
@@ -15,15 +16,6 @@ typedef enum RcColorFormat {
     FMT_NV12,
     FMT_VTB
 }RcColorFormat;
-
-typedef struct RcFrame {
-    uint8_t *data[3];
-    int width;
-    int height;
-    int linesize[3];
-    int planes;
-    RcColorFormat format;
-} RcFrame;
 
 @interface OpenGLRenderer : NSObject 
 
@@ -34,6 +26,6 @@ typedef struct RcFrame {
 - (void) render;
 - (void) dealloc;
 
-- (void)setImage:(RcFrame*)overlay;
+- (void)display:(SDL_VoutOverlay *)realoverlay;
 
 @end

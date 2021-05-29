@@ -615,9 +615,9 @@
 				00244A3B265FF72C00949FD4 /* OpenGLRenderer.h */,
 				00244A3C265FF72C00949FD4 /* OpenGLRenderer.m */,
 				00244A41265FF73900949FD4 /* glUtil.h */,
+				E55AD5E21F7258750041C09A /* ijk_frame.h */,
 				00244A45265FF74B00949FD4 /* ProgramTools.h */,
 				00244A46265FF74B00949FD4 /* ProgramTools.m */,
-				E55AD5E21F7258750041C09A /* ijk_frame.h */,
 			);
 			path = ios;
 			sourceTree = "<group>";

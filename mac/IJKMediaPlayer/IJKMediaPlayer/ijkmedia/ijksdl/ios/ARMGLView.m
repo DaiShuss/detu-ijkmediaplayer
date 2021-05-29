@@ -247,7 +247,21 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink,
     CVDisplayLinkRelease(displayLink);
 }
 
-- (void)setImage:(RcFrame*)overlay {
-    [_renderer setImage:overlay];
+- (void)display:(SDL_VoutOverlay *)overlay {
+    [_renderer display:overlay];
 }
+
+//- (void)displayWithOveraly:(SDL_VoutOverlay *)overlay {
+//    RcFrame frame = {0};
+//    frame.width = overlay->w;
+//    frame.height = overlay->h;
+//    frame.format = FMT_YUV420P;
+//    frame.planes = 3;
+//    for (int i = 0; i < 3; i++) {
+//        frame.data[i] = overlay->pixels[i];
+//        frame.linesize[i] = overlay->pitches[i];
+//    }
+//    [self setImage:&frame];
+//}
+
 @end

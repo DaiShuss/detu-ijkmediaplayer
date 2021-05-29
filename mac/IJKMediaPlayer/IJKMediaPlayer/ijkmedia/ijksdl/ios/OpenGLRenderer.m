@@ -81,7 +81,7 @@ static const char FLAT_FSH_NV12_STR[] = RC_GLES_STRINGIZE(
     GLuint aTextureCoordLocation;
     GLuint mMVPMatrixHandle;
     GLuint program;
-    RcFrame* overLay;
+    SDL_VoutOverlay *real_overaly;
     int index;
     NSLock* renderLock;
 }
@@ -133,27 +133,18 @@ static const char FLAT_FSH_NV12_STR[] = RC_GLES_STRINGIZE(
 
 - (void) render
 {
-    if(overLay == NULL) {
+    if(real_overaly == NULL) {
         return;
     }
-    const int planes = overLay->planes;
+    const int planes = 3;
     if (planes > 10) {
         return;
     }
     if(program == 0) {
-        [self initShader: overLay->format];
+        [self initShader: FMT_YUV420P];
         [self initTextures];
         GetGLError();
     }
-    if(/* DISABLES CODE */ (0)) {
-        int ySize = overLay->width * overLay->height;
-        FILE* file = fopen("/Users/chao/Desktop/ijk.yuv", "wb+");
-        fwrite(overLay->data[0], 1, ySize, file);
-        fwrite(overLay->data[1], 1, ySize / 4, file);
-        fwrite(overLay->data[2], 1, ySize / 4, file);
-        fclose(file);
-    }
-    //NSLog(@"render");
     [self checkGLError];
     glClearColor(0.f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -166,38 +157,28 @@ static const char FLAT_FSH_NV12_STR[] = RC_GLES_STRINGIZE(
     int widths[3] = {0};
     int heights[3] = {0};
     int formats[3] = {0};
-    switch (overLay->format) {
-        case FMT_YUV420P:
-            widths[0] = overLay->linesize[0];
-            widths[1] = widths[2] = (overLay->linesize[0] >> 1);
-            heights[0] = overLay->height;
-            heights[1] = heights[2] = (heights[0] >> 1);
-            formats[0] = formats[1] = formats[2] = GL_LUMINANCE;
-            break;
-        case FMT_NV12:
-            widths[0] = overLay->linesize[0];
-            widths[1] = overLay->linesize[0] / 2;
-            heights[0] = overLay->height;
-            heights[1] = overLay->height / 2;
-            formats[0] = GL_LUMINANCE;
-            formats[1] = GL_LUMINANCE_ALPHA;
-            break;
-        default:
-            break;
-    }
+    
+    widths[0] = real_overaly->pitches[0];
+    widths[1] = widths[2] = (real_overaly->pitches[0] >> 1);
+    heights[0] = real_overaly->h;
+    heights[1] = heights[2] = (heights[0] >> 1);
+    formats[0] = formats[1] = formats[2] = GL_LUMINANCE;
+
     for (int i = 0; i < planes; ++i) {
+        uint8_t *data = real_overaly->pixels[i];
+        int format = formats[i];
         glActiveTexture(GL_TEXTURE0 + i);
         glBindTexture(GL_TEXTURE_2D, textures[i]);
         glUniform1i(uniformSamplers[i], i);
         glTexImage2D(GL_TEXTURE_2D,
                      0,
-                     formats[i],
+                     format,
                      (int) widths[i],
                      (int) heights[i],
                      0,
-                     formats[i],
+                     format,
                      GL_UNSIGNED_BYTE,
-                     overLay->data[i]);
+                     data);
         
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -247,9 +228,9 @@ static const char FLAT_FSH_NV12_STR[] = RC_GLES_STRINGIZE(
     mMVPMatrixHandle = glGetUniformLocation(program, "u_MVPMatrix");
 }
 
-- (void)setImage:(RcFrame*)cacheOverlay {
+- (void)display:(SDL_VoutOverlay *)overlay {
     [renderLock lock];
-    overLay = cacheOverlay;
+    real_overaly = overlay;
     [renderLock unlock];
 }
 

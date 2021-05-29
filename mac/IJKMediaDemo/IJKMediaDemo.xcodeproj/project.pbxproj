@@ -43,8 +43,6 @@
 		E5F878821F92012E0074B5AC /* ffmpegutils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F878741F92012E0074B5AC /* ffmpegutils.c */; };
 		E5F878831F92012E0074B5AC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5F878771F92012E0074B5AC /* Info.plist */; };
 		E5F878841F92012E0074B5AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F878781F92012E0074B5AC /* main.m */; };
-		E5F878851F92012E0074B5AC /* OpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F8787A1F92012E0074B5AC /* OpenGLRenderer.m */; };
-		E5F878861F92012E0074B5AC /* ProgramTools.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F8787C1F92012E0074B5AC /* ProgramTools.m */; };
 		E5F8788D1F9202950074B5AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F8788C1F9202950074B5AC /* ViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -115,13 +113,8 @@
 		E5F878731F92012E0074B5AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E5F878741F92012E0074B5AC /* ffmpegutils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ffmpegutils.c; sourceTree = "<group>"; };
 		E5F878751F92012E0074B5AC /* ffmpegutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ffmpegutils.h; sourceTree = "<group>"; };
-		E5F878761F92012E0074B5AC /* glUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glUtil.h; path = ../../IJKMediaPlayer/IJKMediaPlayer/ijkmedia/ijksdl/ios/glUtil.h; sourceTree = "<group>"; };
 		E5F878771F92012E0074B5AC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5F878781F92012E0074B5AC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E5F878791F92012E0074B5AC /* OpenGLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenGLRenderer.h; path = ../../IJKMediaPlayer/IJKMediaPlayer/ijkmedia/ijksdl/ios/OpenGLRenderer.h; sourceTree = "<group>"; };
-		E5F8787A1F92012E0074B5AC /* OpenGLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenGLRenderer.m; path = ../../IJKMediaPlayer/IJKMediaPlayer/ijkmedia/ijksdl/ios/OpenGLRenderer.m; sourceTree = "<group>"; };
-		E5F8787B1F92012E0074B5AC /* ProgramTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgramTools.h; path = ../../IJKMediaPlayer/IJKMediaPlayer/ijkmedia/ijksdl/ios/ProgramTools.h; sourceTree = "<group>"; };
-		E5F8787C1F92012E0074B5AC /* ProgramTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgramTools.m; path = ../../IJKMediaPlayer/IJKMediaPlayer/ijkmedia/ijksdl/ios/ProgramTools.m; sourceTree = "<group>"; };
 		E5F8788B1F9202950074B5AC /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E5F8788C1F9202950074B5AC /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +157,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00C5481926629082009BCBA6 /* UnUsed */ = {
+			isa = PBXGroup;
+			children = (
+				E5349CD21F95E9BC00EC16D7 /* MacVideoToolBoxDecoder.h */,
+				E5349CDE1F95ED7C00EC16D7 /* VideoToolBoxDecoder.h */,
+				E5349CDF1F95ED7C00EC16D7 /* VideoToolBoxDecoder.m */,
+				E5349CD31F95E9BC00EC16D7 /* MacVideoToolBoxDecoder.m */,
+				E5349CD71F95ED0700EC16D7 /* H264Utils.h */,
+				E5349CD81F95ED0700EC16D7 /* H264Utils.m */,
+				E5F878751F92012E0074B5AC /* ffmpegutils.h */,
+				E5F878741F92012E0074B5AC /* ffmpegutils.c */,
+			);
+			path = UnUsed;
+			sourceTree = "<group>";
+		};
 		91C738B61CC22743003C6DC9 = {
 			isa = PBXGroup;
 			children = (
@@ -229,27 +237,15 @@
 		E5F8786E1F92012E0074B5AC /* IJKMediaDemo */ = {
 			isa = PBXGroup;
 			children = (
+				00C5481926629082009BCBA6 /* UnUsed */,
 				E5F8786F1F92012E0074B5AC /* AppDelegate.h */,
 				E5F878701F92012E0074B5AC /* AppDelegate.m */,
 				E5F878711F92012E0074B5AC /* Assets.xcassets */,
 				E5F878721F92012E0074B5AC /* MainMenu.xib */,
-				E5F878741F92012E0074B5AC /* ffmpegutils.c */,
 				E5F8788B1F9202950074B5AC /* ViewController.h */,
 				E5F8788C1F9202950074B5AC /* ViewController.m */,
-				E5349CD21F95E9BC00EC16D7 /* MacVideoToolBoxDecoder.h */,
-				E5349CDE1F95ED7C00EC16D7 /* VideoToolBoxDecoder.h */,
-				E5349CDF1F95ED7C00EC16D7 /* VideoToolBoxDecoder.m */,
-				E5349CD31F95E9BC00EC16D7 /* MacVideoToolBoxDecoder.m */,
-				E5349CD71F95ED0700EC16D7 /* H264Utils.h */,
-				E5349CD81F95ED0700EC16D7 /* H264Utils.m */,
-				E5F878751F92012E0074B5AC /* ffmpegutils.h */,
-				E5F878761F92012E0074B5AC /* glUtil.h */,
 				E5F878771F92012E0074B5AC /* Info.plist */,
 				E5F878781F92012E0074B5AC /* main.m */,
-				E5F878791F92012E0074B5AC /* OpenGLRenderer.h */,
-				E5F8787A1F92012E0074B5AC /* OpenGLRenderer.m */,
-				E5F8787B1F92012E0074B5AC /* ProgramTools.h */,
-				E5F8787C1F92012E0074B5AC /* ProgramTools.m */,
 			);
 			path = IJKMediaDemo;
 			sourceTree = "<group>";
@@ -356,8 +352,6 @@
 				E5F878821F92012E0074B5AC /* ffmpegutils.c in Sources */,
 				E5F878841F92012E0074B5AC /* main.m in Sources */,
 				E5F8787F1F92012E0074B5AC /* AppDelegate.m in Sources */,
-				E5F878861F92012E0074B5AC /* ProgramTools.m in Sources */,
-				E5F878851F92012E0074B5AC /* OpenGLRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

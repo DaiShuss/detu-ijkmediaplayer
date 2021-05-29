@@ -74,51 +74,6 @@ static void vout_free_l(SDL_Vout *vout)
     SDL_Vout_FreeInternal(vout);
 }
 
-static void set_image(SDL_Vout *vout, IjkVideoFrame *overlay) {
-    ARMGLView *openGLView = vout->opaque->gl_view;
-    RcFrame frame = {0};
-    frame.data[0] = overlay->data[0];
-    frame.data[1] = overlay->data[1];
-    frame.data[2] = overlay->data[2];
-    frame.linesize[0] = overlay->linesize[0];
-    frame.linesize[1] = overlay->linesize[1];
-    frame.linesize[2] = overlay->linesize[2];
-    frame.width = overlay->w;
-    frame.height = overlay->h;
-    switch(overlay->format) {
-        case PIX_FMT_YUV420P:
-            frame.format = FMT_YUV420P;
-            frame.planes = 3;
-            break;
-        case PIX_FMT_NV12:
-            frame.format = FMT_NV12;
-            frame.planes = 2;
-            break;
-        default:
-            break;
-    }
-    [openGLView setImage:&frame];
-}
-
-void display_internal(SDL_Vout *vout, SDL_VoutOverlay* overlay) {
-    if (overlay == NULL) {
-        return;
-    }
-    IjkVideoFrame videoFrame = {0};
-    
-    //软解数据,YUV420P
-    videoFrame.w = overlay->w;
-    videoFrame.h = overlay->h;
-    videoFrame.format = PIX_FMT_YUV420P;
-    int planes = 3;
-    videoFrame.planes = planes;
-    for(int i = 0; i< planes; i++) {
-        videoFrame.data[i] = overlay->pixels[i];
-        videoFrame.linesize[i] = overlay->pitches[i];
-    }
-    set_image(vout, &videoFrame);
-}
-
 static int vout_display_overlay_l(SDL_Vout *vout, SDL_VoutOverlay *overlay)
 {
     SDL_Vout_Opaque *opaque = vout->opaque;
@@ -142,7 +97,7 @@ static int vout_display_overlay_l(SDL_Vout *vout, SDL_VoutOverlay *overlay)
         return 0;
     }
     
-    display_internal(vout, overlay);
+    [gl_view display:overlay];
     
     return 0;
 }
