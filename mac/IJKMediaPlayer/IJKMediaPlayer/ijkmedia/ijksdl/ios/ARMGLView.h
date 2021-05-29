@@ -1,7 +1,7 @@
 /*
  Project: CIColorTracking
  
- File: VideoCIView.h
+ File: ARMGLView.h
  
  Abstract:
  This is the header file for VideoCIView, a class that sets up and manages the OpenGL context that shows the video.
@@ -53,7 +53,7 @@
 #import <QuartzCore/CVDisplayLink.h>
 #import "OpenGLRenderer.h"
 
-@interface VideoGLView : NSOpenGLView {
+@interface ARMGLView : NSOpenGLView {
     CVDisplayLinkRef displayLink;
 }
 

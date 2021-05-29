@@ -36,7 +36,7 @@ typedef struct SDL_VoutSurface_Opaque {
 } SDL_VoutSurface_Opaque;
 
 struct SDL_Vout_Opaque {
-    VideoGLView *gl_view;
+    ARMGLView *gl_view;
 };
 
 static SDL_VoutOverlay *vout_create_overlay_l(int width, int height, int frame_format, SDL_Vout *vout)
@@ -75,7 +75,7 @@ static void vout_free_l(SDL_Vout *vout)
 }
 
 static void bbb(SDL_Vout *vout, IjkVideoFrame *overlay) {
-    VideoGLView *openGLView = vout->opaque->gl_view;
+    ARMGLView *openGLView = vout->opaque->gl_view;
     RcFrame frame = {0};
     frame.data[0] = overlay->data[0];
     frame.data[1] = overlay->data[1];
@@ -122,7 +122,7 @@ void aaa(SDL_Vout *vout, SDL_VoutOverlay* overlay) {
 static int vout_display_overlay_l(SDL_Vout *vout, SDL_VoutOverlay *overlay)
 {
     SDL_Vout_Opaque *opaque = vout->opaque;
-    VideoGLView *gl_view = opaque->gl_view;
+    ARMGLView *gl_view = opaque->gl_view;
     
     if (!gl_view) {
         return -1;
@@ -172,7 +172,7 @@ SDL_Vout *SDL_VoutIos_CreateForGLES2()
     return vout;
 }
 
-static void SDL_VoutIos_SetGLView_l(SDL_Vout *vout, VideoGLView *view)
+static void SDL_VoutIos_SetGLView_l(SDL_Vout *vout, ARMGLView *view)
 {
     SDL_Vout_Opaque *opaque = vout->opaque;
     
@@ -188,7 +188,7 @@ static void SDL_VoutIos_SetGLView_l(SDL_Vout *vout, VideoGLView *view)
         opaque->gl_view = [view retain];
 }
 
-void SDL_VoutIos_SetGLView(SDL_Vout *vout, VideoGLView *view)
+void SDL_VoutIos_SetGLView(SDL_Vout *vout, ARMGLView *view)
 {
     SDL_LockMutex(vout->mutex);
     SDL_VoutIos_SetGLView_l(vout, view);

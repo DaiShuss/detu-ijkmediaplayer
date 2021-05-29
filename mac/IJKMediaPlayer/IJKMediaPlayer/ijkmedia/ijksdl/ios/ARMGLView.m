@@ -6,18 +6,18 @@
  OpenGL view subclass.
  */
 
-#import "VideoGLView.h"
+#import "ARMGLView.h"
 #import "OpenGLRenderer.h"
 
 //#define SUPPORT_RETINA_RESOLUTION 1
 
-@interface VideoGLView()
+@interface ARMGLView()
 {
     OpenGLRenderer* _renderer;
 }
 @end
 
-@implementation VideoGLView
+@implementation ARMGLView
 
 - (instancetype)initWithFrame:(NSRect)frame
 {
@@ -86,7 +86,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink,
                                       CVOptionFlags* flagsOut,
                                       void* displayLinkContext)
 {
-    CVReturn result = [(__bridge VideoGLView*)displayLinkContext getFrameForTime:outputTime];
+    CVReturn result = [(__bridge ARMGLView*)displayLinkContext getFrameForTime:outputTime];
     return result;
 }
 

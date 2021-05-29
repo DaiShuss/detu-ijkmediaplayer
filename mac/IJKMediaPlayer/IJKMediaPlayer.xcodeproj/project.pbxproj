@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00244A37265FF70B00949FD4 /* VideoGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00244A36265FF70B00949FD4 /* VideoGLView.m */; };
+		00244A37265FF70B00949FD4 /* ARMGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00244A36265FF70B00949FD4 /* ARMGLView.m */; };
 		00244A3D265FF72C00949FD4 /* OpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 00244A3C265FF72C00949FD4 /* OpenGLRenderer.m */; };
 		00244A47265FF74B00949FD4 /* ProgramTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 00244A46265FF74B00949FD4 /* ProgramTools.m */; };
 		E51F3D6A1EF2753F00B1B201 /* ijkversion.h in Headers */ = {isa = PBXBuildFile; fileRef = E51F3D691EF2753F00B1B201 /* ijkversion.h */; };
@@ -177,8 +177,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00244A34265FF70B00949FD4 /* VideoGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoGLView.h; sourceTree = "<group>"; };
-		00244A36265FF70B00949FD4 /* VideoGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoGLView.m; sourceTree = "<group>"; };
+		00244A34265FF70B00949FD4 /* ARMGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARMGLView.h; sourceTree = "<group>"; };
+		00244A36265FF70B00949FD4 /* ARMGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARMGLView.m; sourceTree = "<group>"; };
 		00244A3B265FF72C00949FD4 /* OpenGLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLRenderer.h; sourceTree = "<group>"; };
 		00244A3C265FF72C00949FD4 /* OpenGLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLRenderer.m; sourceTree = "<group>"; };
 		00244A41265FF73900949FD4 /* glUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glUtil.h; sourceTree = "<group>"; };
@@ -610,8 +610,8 @@
 				E5B6F8881EF8195A004ECDD4 /* IJKSDLAudioQueueController.m */,
 				E5B6F8891EF8195A004ECDD4 /* IJKSDLAudioUnitController.h */,
 				E5B6F88A1EF8195A004ECDD4 /* IJKSDLAudioUnitController.m */,
-				00244A34265FF70B00949FD4 /* VideoGLView.h */,
-				00244A36265FF70B00949FD4 /* VideoGLView.m */,
+				00244A34265FF70B00949FD4 /* ARMGLView.h */,
+				00244A36265FF70B00949FD4 /* ARMGLView.m */,
 				00244A3B265FF72C00949FD4 /* OpenGLRenderer.h */,
 				00244A3C265FF72C00949FD4 /* OpenGLRenderer.m */,
 				00244A41265FF73900949FD4 /* glUtil.h */,
@@ -912,7 +912,7 @@
 				E5B6F89B1EF8195A004ECDD4 /* avqueue.c in Sources */,
 				E5B6F8A41EF8195A004ECDD4 /* netio.c in Sources */,
 				E5B6F8BA1EF8195A004ECDD4 /* IJKVideoToolBox.m in Sources */,
-				00244A37265FF70B00949FD4 /* VideoGLView.m in Sources */,
+				00244A37265FF70B00949FD4 /* ARMGLView.m in Sources */,
 				E5B6F9801EF81A0F004ECDD4 /* ijksdl_thread.c in Sources */,
 				E5B6F8311EF811ED004ECDD4 /* IJKMediaUtils.m in Sources */,
 				00244A47265FF74B00949FD4 /* ProgramTools.m in Sources */,

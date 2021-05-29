@@ -178,7 +178,7 @@ void IJKFFIOStatCompleteRegister(void (*cb)(const char *url,
 
 - (id)initWithContentURL:(NSURL *)aUrl
              withOptions:(IJKFFOptions *)options
-                  glView:(VideoGLView *)glView {
+                  glView:(ARMGLView *)glView {
     if (aUrl == nil)
         return nil;
 
@@ -191,7 +191,7 @@ void IJKFFIOStatCompleteRegister(void (*cb)(const char *url,
 - (id)initWithContentURLString:(NSString *)aUrlString
                    withOptions:(IJKFFOptions *)options
                 isVideotoolbox:(Boolean)isVideotoolbox
-                        glView:(VideoGLView *)glView {
+                        glView:(ARMGLView *)glView {
     self.isVideotoolbox = isVideotoolbox;
     return [self initWithContentURLString:aUrlString withOptions:options glView:glView];
 }
@@ -310,7 +310,7 @@ void voutFreeL(SDL_Vout *vout) {
 
 - (id)initWithContentURLString:(NSString *)aUrlString
                    withOptions:(IJKFFOptions *)options
-                        glView:(VideoGLView *)glView
+                        glView:(ARMGLView *)glView
 {
     if (aUrlString == nil)
         return nil;

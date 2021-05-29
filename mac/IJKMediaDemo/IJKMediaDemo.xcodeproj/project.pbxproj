@@ -45,7 +45,6 @@
 		E5F878841F92012E0074B5AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F878781F92012E0074B5AC /* main.m */; };
 		E5F878851F92012E0074B5AC /* OpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F8787A1F92012E0074B5AC /* OpenGLRenderer.m */; };
 		E5F878861F92012E0074B5AC /* ProgramTools.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F8787C1F92012E0074B5AC /* ProgramTools.m */; };
-		E5F878871F92012E0074B5AC /* VideoGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F8787E1F92012E0074B5AC /* VideoGLView.m */; };
 		E5F8788D1F9202950074B5AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F8788C1F9202950074B5AC /* ViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -123,8 +122,6 @@
 		E5F8787A1F92012E0074B5AC /* OpenGLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenGLRenderer.m; path = ../../IJKMediaPlayer/IJKMediaPlayer/ijkmedia/ijksdl/ios/OpenGLRenderer.m; sourceTree = "<group>"; };
 		E5F8787B1F92012E0074B5AC /* ProgramTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgramTools.h; path = ../../IJKMediaPlayer/IJKMediaPlayer/ijkmedia/ijksdl/ios/ProgramTools.h; sourceTree = "<group>"; };
 		E5F8787C1F92012E0074B5AC /* ProgramTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgramTools.m; path = ../../IJKMediaPlayer/IJKMediaPlayer/ijkmedia/ijksdl/ios/ProgramTools.m; sourceTree = "<group>"; };
-		E5F8787D1F92012E0074B5AC /* VideoGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoGLView.h; path = ../../IJKMediaPlayer/IJKMediaPlayer/ijkmedia/ijksdl/ios/VideoGLView.h; sourceTree = "<group>"; };
-		E5F8787E1F92012E0074B5AC /* VideoGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoGLView.m; path = ../../IJKMediaPlayer/IJKMediaPlayer/ijkmedia/ijksdl/ios/VideoGLView.m; sourceTree = "<group>"; };
 		E5F8788B1F9202950074B5AC /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E5F8788C1F9202950074B5AC /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -253,8 +250,6 @@
 				E5F8787A1F92012E0074B5AC /* OpenGLRenderer.m */,
 				E5F8787B1F92012E0074B5AC /* ProgramTools.h */,
 				E5F8787C1F92012E0074B5AC /* ProgramTools.m */,
-				E5F8787D1F92012E0074B5AC /* VideoGLView.h */,
-				E5F8787E1F92012E0074B5AC /* VideoGLView.m */,
 			);
 			path = IJKMediaDemo;
 			sourceTree = "<group>";
@@ -359,7 +354,6 @@
 				E5F8788D1F9202950074B5AC /* ViewController.m in Sources */,
 				E5349CE01F95ED7C00EC16D7 /* VideoToolBoxDecoder.m in Sources */,
 				E5F878821F92012E0074B5AC /* ffmpegutils.c in Sources */,
-				E5F878871F92012E0074B5AC /* VideoGLView.m in Sources */,
 				E5F878841F92012E0074B5AC /* main.m in Sources */,
 				E5F8787F1F92012E0074B5AC /* AppDelegate.m in Sources */,
 				E5F878861F92012E0074B5AC /* ProgramTools.m in Sources */,

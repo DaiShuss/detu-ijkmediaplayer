@@ -189,7 +189,7 @@ int ijkFfplayDecoder_setDecoderCallBack(IjkFfplayDecoder* decoder, void* opaque,
     return 0;
 }
 
-int ijkFfplayDecoder_setDataSource(IjkFfplayDecoder* decoder, const char* file_absolute_path, VideoGLView *glview) {
+int ijkFfplayDecoder_setDataSource(IjkFfplayDecoder* decoder, const char* file_absolute_path, ARMGLView *glview) {
     if(decoder == NULL || file_absolute_path == NULL || strlen(file_absolute_path) == 0) {
         return -1;
     }

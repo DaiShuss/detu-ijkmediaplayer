@@ -24,7 +24,7 @@
 #import "IJKFFMonitor.h"
 #import "IJKFFOptions.h"
 #import "ijksdl.h"
-#import "VideoGLView.h"
+#import "ARMGLView.h"
 
 typedef void (^DisplayFrameBlock)(SDL_VoutOverlay* overlay);
 
@@ -75,17 +75,17 @@ typedef enum MAC_IJKLogLevel {
 
 - (id)initWithContentURL:(NSURL *)aUrl
              withOptions:(IJKFFOptions *)options
-                  glView:(VideoGLView *)glView;
+                  glView:(ARMGLView *)glView;
 
 - (id)initWithContentURLString:(NSString *)aUrlString
                    withOptions:(IJKFFOptions *)options
-                        glView:(VideoGLView *)glView;
+                        glView:(ARMGLView *)glView;
 
 @property(nonatomic,assign) Boolean isVideotoolbox;
 - (id)initWithContentURLString:(NSString *)aUrlString
                    withOptions:(IJKFFOptions *)options
                 isVideotoolbox:(Boolean)isVideotoolbox
-                        glView:(VideoGLView *)glView;
+                        glView:(ARMGLView *)glView;
 
 - (void)prepareToPlay;
 - (void)play;

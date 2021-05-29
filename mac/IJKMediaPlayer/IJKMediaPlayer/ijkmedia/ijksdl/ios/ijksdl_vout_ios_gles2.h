@@ -22,9 +22,9 @@
 
 #include "ijksdl/ijksdl_stdinc.h"
 #include "ijksdl/ijksdl_vout.h"
-#include "VideoGLView.h"
+#include "ARMGLView.h"
 
 @class IJKSDLGLView;
 
 SDL_Vout *SDL_VoutIos_CreateForGLES2();
-void SDL_VoutIos_SetGLView(SDL_Vout *vout, VideoGLView *view);
+void SDL_VoutIos_SetGLView(SDL_Vout *vout, ARMGLView *view);

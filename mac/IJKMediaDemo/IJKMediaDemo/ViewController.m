@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "VideoGLView.h"
+#import "ARMGLView.h"
 @import AVFoundation;
 
 //#define QUARTZ
@@ -36,7 +36,7 @@
 
 @property (weak) IBOutlet NSImageView *cameraView;
 @property (weak) IBOutlet NSTextField *fpsLabel;
-@property (nonatomic, strong) VideoGLView *openGLView;
+@property (nonatomic, strong) ARMGLView *openGLView;
 @property (nonatomic, strong)MacVideoToolBoxDecoder* macVideoToolBoxDecoder;
 @end
 
@@ -49,7 +49,7 @@ void func_state_change(void* opaque, IjkMsgState ijk_msgint, int arg1, int arg2)
     ViewController* controller = (__bridge ViewController*)opaque;
     switch (ijk_msgint) {
         case IJK_MSG_PREPARED:
-            ijkFfplayDecoder_setVolume(controller->decoder, 0.2f);
+            ijkFfplayDecoder_setVolume(controller->decoder, 0.0f);
             break;
             
         default:
@@ -63,7 +63,7 @@ void func_state_change(void* opaque, IjkMsgState ijk_msgint, int arg1, int arg2)
     // Do any additional setup after loading the view.
     self.view.autoresizesSubviews = YES;
     NSRect frame = NSMakeRect(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40);
-    self.openGLView = [[VideoGLView alloc] initWithFrame:frame];
+    self.openGLView = [[ARMGLView alloc] initWithFrame:frame];
     self.openGLView.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;
     [self.view addSubview:self.openGLView];
     
