@@ -74,7 +74,7 @@ static void vout_free_l(SDL_Vout *vout)
     SDL_Vout_FreeInternal(vout);
 }
 
-static void bbb(SDL_Vout *vout, IjkVideoFrame *overlay) {
+static void set_image(SDL_Vout *vout, IjkVideoFrame *overlay) {
     ARMGLView *openGLView = vout->opaque->gl_view;
     RcFrame frame = {0};
     frame.data[0] = overlay->data[0];
@@ -100,7 +100,7 @@ static void bbb(SDL_Vout *vout, IjkVideoFrame *overlay) {
     [openGLView setImage:&frame];
 }
 
-void aaa(SDL_Vout *vout, SDL_VoutOverlay* overlay) {
+void display_internal(SDL_Vout *vout, SDL_VoutOverlay* overlay) {
     if (overlay == NULL) {
         return;
     }
@@ -115,8 +115,8 @@ void aaa(SDL_Vout *vout, SDL_VoutOverlay* overlay) {
     for(int i = 0; i< planes; i++) {
         videoFrame.data[i] = overlay->pixels[i];
         videoFrame.linesize[i] = overlay->pitches[i];
-        bbb(vout, &videoFrame);
     }
+    set_image(vout, &videoFrame);
 }
 
 static int vout_display_overlay_l(SDL_Vout *vout, SDL_VoutOverlay *overlay)
@@ -142,7 +142,7 @@ static int vout_display_overlay_l(SDL_Vout *vout, SDL_VoutOverlay *overlay)
         return 0;
     }
     
-    aaa(vout, overlay);
+    display_internal(vout, overlay);
     
     return 0;
 }
